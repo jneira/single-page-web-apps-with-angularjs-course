@@ -60,7 +60,10 @@ function ShoppingListService(defaultItems) {
   }
 }
 
-
+/**
+ I use a factory to return an object with singleton instances of
+ two different services, one for each list
+*/
 function ShoppingListFactory() {
   var defaultItems=[
     {name:"Sword",quantity:2},
