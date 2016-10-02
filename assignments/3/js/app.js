@@ -30,7 +30,7 @@ function NarrowItDownController(MenuSearchService) {
 MenuSearchService.$inject = ['$http', 'ApiBasePath']
 function MenuSearchService($http,ApiBasePath){
   var service = this;
-  var url="https://davids-restaurant.herokuapp.com/menu_items.json";
+  var url=ApiBasePath+"/menu_items.json";
   service.getMatchedMenuItems = function (searchTerm) {
     return $http({
       method: "GET",
