@@ -3,7 +3,7 @@
 angular.module("NarrowItDownApp",[]).
     controller("NarrowItDownController",NarrowItDownController).
     service("MenuSearchService",MenuSearchService).
-    constant('ApiBasePath', "http://davids-restaurant.herokuapp.com").
+    constant('ApiBasePath', "https://davids-restaurant.herokuapp.com").
     directive("foundItems",FoundItemsDirective);
 
 NarrowItDownController.$inject = ["MenuSearchService"]
@@ -20,7 +20,6 @@ function NarrowItDownController(MenuSearchService) {
       catch(function(err){
         console.log("Error fatal: "+err);
       });
-    console.log(ctrl.found);
   } 
   ctrl.removeItem = function(index) {
     ctrl.found.splice(index,1);
