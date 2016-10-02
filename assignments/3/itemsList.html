@@ -2,10 +2,11 @@
   <h3>Items</h3>
   <ol>
     <li class="item name" ng-repeat="item in items">
-      {{ item.name }}
+      {{ item.name }}, {{ item.short_name}}, {{item.description}}
       <button ng-click="onRemove({index: $index});">
         Don't want this one!
       </button>
     </li>
   </ol>
+  <div ng-if="items">Nothing found</div>
 </div>
