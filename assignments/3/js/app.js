@@ -49,7 +49,7 @@ function MenuSearchService($http,ApiBasePath){
 
 function FoundItemsDirective () {
   var ddo = {
-    templateUrl: '../itemsList.html',
+    templateUrl: './itemsList.html',
     scope: {
       items: '<',
       onRemove: '&'
