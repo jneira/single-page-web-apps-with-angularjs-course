@@ -28,7 +28,9 @@ function NarrowItDownController(MenuSearchService) {
   ctrl.removeItem = function(index) {
     ctrl.found.splice(index,1);
   };
-  ctrl.searchItems()
+  ctrl.isEmpty = function () {
+    return ctrl.found.length === 0;
+  };
 }
 
 MenuSearchService.$inject = ['$http', 'ApiBasePath']
@@ -56,7 +58,8 @@ function FoundItemsDirective () {
     templateUrl: './itemsList.html',
     scope: {
       items: '<',
-      onRemove: '&'
+      onRemove: '&',
+      isEmpty: '&'
     }
   };
   return ddo;
