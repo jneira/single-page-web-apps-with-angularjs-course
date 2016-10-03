@@ -12,6 +12,10 @@ function NarrowItDownController(MenuSearchService) {
   ctrl.searchTerm = "";
   ctrl.found = [];
   ctrl.searchItems = function () {
+    if (!searchTerm) {
+          ctrl.found = [];
+          return;
+    }
     MenuSearchService.
       getMatchedMenuItems(ctrl.searchTerm).
       then(function(data) {
