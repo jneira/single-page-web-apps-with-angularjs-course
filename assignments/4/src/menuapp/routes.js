@@ -20,22 +20,30 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 
   // Premade list page
   .state('category', {
-    url: '/category/',
+    url: '/category/{shortName}',
     templateUrl: 'src/menuapp/category/templates/category.index.template.html',
     controller: 'CategoryController as categoryCtrl',
     resolve: {
       categories: ['MenuDataService', function (MenuDataService) {
-        console.log("Routing /category/")
+        console.log("Resolving /category/: categories")
         var promise=  MenuDataService.getAllCategories();
         console.log("Promised categories: ", promise);
         return promise;
-      }]
+      }],
+      category: ['$stateParams','MenuDataService','categories',
+        function ($stateParams,MenuDataService,categories) {
+          console.log("Resolving /category/"+$stateParams.shortName+": category")
+          var cat= MenuDataService.getCategoryByShortName(
+            $stateParams.shortName,categories.data);
+          return cat;
+        }]
+      
     }
   })
 
   // Item detail
   .state('category.items', {
-    url: '{shortName}/item/',
+    url: '/item',
     templateUrl: 'src/menuapp/item/templates/item.index.template.html',
     controller: 'ItemController as itemCtrl',
     params: {shortName: null},
@@ -46,14 +54,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
           $stateParams.shortName);
         console.log("Promised items: ", promise);
         return promise;
-      }],
-      category: ['$stateParams','MenuDataService','categories',
-        function ($stateParams,MenuDataService,categories) {
-          console.log("Resolving /category/"+$stateParams.shortName+"/item/: category")
-          var cat= MenuDataService.getCategoryByShortName(
-            $stateParams.shortName,categories.data);
-          return cat;
-        }]
+      }]
     }
   });
 

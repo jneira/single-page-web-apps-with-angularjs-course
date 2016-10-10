@@ -1,3 +1,7 @@
 <h2> List of categories </h2>
 
-<categories items="categoryCtrl.categories"></categories>
+
+<ui-view></ui-view>
+
+<categories items="categoryCtrl.categories"
+            ng-if="!categoryCtrl.category"></categories>
