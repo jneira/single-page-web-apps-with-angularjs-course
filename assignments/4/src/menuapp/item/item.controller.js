@@ -7,9 +7,7 @@ angular.module('MenuApp').
 ItemController.$inject=["category","items","$stateParams"]
 function ItemController (category,items,$stateParams) {
   var ctrl = this;
-  console.log("ItemController: items: ",items)
-  console.log("ItemController: category: ",category)
-  ctrl.items=items.data;
+  ctrl.items=items.data.menu_items;
   ctrl.category=category;
 }
 

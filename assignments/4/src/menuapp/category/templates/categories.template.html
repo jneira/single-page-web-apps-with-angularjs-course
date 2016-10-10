@@ -1,6 +1,19 @@
 <ul class="category-list">
   <li ng-repeat="item in $ctrl.items">
-    {{item.id}} : {{item.name}}
-    <a ui-sref="category.items({shortName:item.short_name})">See items</a>
+    <span class="category-list-data" ng-if="!$ctrl.isDetail">
+      <a ui-sref="category({shortName:item.short_name})">
+        {{item.id}} : {{item.name}}
+      </a>
+    </span>
+    <span class="category-detail-data" ng-if="$ctrl.isDetail">
+      {{item.special_instructions}} 
+      <br />
+      <a ui-sref="category({shortName:''})">
+         All categories
+       </a>
+    </span>
+    <a ui-sref="category.items({shortName:item.short_name})">
+        Items
+     </a>
   </li>
 </ul>
