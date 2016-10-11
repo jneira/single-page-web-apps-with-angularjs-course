@@ -49,14 +49,14 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     url: '/item/{itemId}',
     templateUrl: 'src/menuapp/item/templates/item.index.template.html',
     controller: 'ItemController as itemCtrl',
-    params: {itemId: null},
+    params: {shortName:null,itemId: null},
     resolve: {
-      items: ['$stateParams','MenuDataService', 
-        function ($stateParams,MenuDataService) {
-          console.log("Resolving /category/"+$stateParams.shortName+
+      items: ['$stateParams','MenuDataService','category', 
+        function ($stateParams,MenuDataService,category) {
+          var shortName=$stateParams.shortName || category.short_name;
+          console.log("Resolving /category/"+shortName+
                       "/item/: items ")
-          var promise= MenuDataService.getItemsByCategory(
-            $stateParams.shortName);
+          var promise= MenuDataService.getItemsByCategory(shortName);
           console.log("Promised items: ", promise);
           return promise;
         }]

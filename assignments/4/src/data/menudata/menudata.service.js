@@ -26,7 +26,7 @@ function MenuDataService ($http,ApiBasePath) {
     return $http({
       method: "GET",
       url: url,
-      data: {category: shortName}
+      params: {category: shortName}
     });
   }
   service.getCategoryByShortName = function (shortName,cats) {
