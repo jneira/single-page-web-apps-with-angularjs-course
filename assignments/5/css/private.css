@@ -1,0 +1,22 @@
+div.messages {
+    margin-left: 1em;
+}
+
+form {
+    color: black;
+    margin-left: 1em;
+}
+label {
+    color: white;
+    font-wight: bold;
+}
+.ng-touched.ng-invalid {
+    border: 2px red solid;
+}
+
+.ng-touched.ng-valid {
+    border: 2px green solid;
+}
+
+form span {
+    color: white;

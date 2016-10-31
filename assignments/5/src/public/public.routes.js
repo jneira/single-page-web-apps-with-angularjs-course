@@ -10,9 +10,10 @@ angular.module('public')
 routeConfig.$inject = ['$stateProvider'];
 function routeConfig ($stateProvider) {
   // Routes
+  console.log("Configuring public routes")
   $stateProvider
     .state('public', {
-      absract: true,
+      abstract: true,
       templateUrl: 'src/public/public.html'
     })
     .state('public.home', {
@@ -36,9 +37,10 @@ function routeConfig ($stateProvider) {
       controller: 'MenuItemsController',
       controllerAs: 'menuItemsCtrl',
       resolve: {
-        menuItems: ['$stateParams','MenuService', function ($stateParams, MenuService) {
-          return MenuService.getMenuItems($stateParams.category);
-        }]
+        menuItems: ['$stateParams','MenuService', 
+                    function ($stateParams, MenuService) {
+                      return MenuService.getMenuItems($stateParams.category);
+                    }]
       }
     });
 }

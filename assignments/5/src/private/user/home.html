@@ -1,0 +1,8 @@
+<h2 class="text-center">{{userCtrl.actualUser.id}} info</h2>
+
+<user-info user="userCtrl.actualUser" read="true" 
+           ng-if="userCtrl.actualUser.id">
+</user-info>
+<div class="error" ng-if="!userCtrl.actualUser.id">
+  Not Signed Up Yet. <a ui-sref="user.signup">Sign up Now!</a>
+</div>
