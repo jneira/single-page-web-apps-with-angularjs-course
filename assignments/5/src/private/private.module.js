@@ -3,6 +3,6 @@
 /**
  * Private restaurant application. Includes the common module and ui-router.
  */
-angular.module('private', ['ui.router', 'common','public']);
+angular.module('private', ['ui.router', 'common']);
 
 })();

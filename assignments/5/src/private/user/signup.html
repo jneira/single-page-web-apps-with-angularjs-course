@@ -1,8 +1,10 @@
-<h2 class="text-center">Sign up</h2>
-<user-info user="userCtrl.actualUser" on-submit="userCtrl.signUp(user)">
-</user-info>
-<div class="messages">
-  <div class="message" ng-repeat="msg in userCtrl.messages">
-    {{msg}}
+<div class="container">
+  <h2 class="text-center">Sign up</h2>
+  <user-info user="userCtrl.newUser" on-submit="userCtrl.signUp(user)">
+  </user-info>
+  <div class="messages">
+    <div class="message" ng-repeat="msg in userCtrl.messages">
+      {{msg}}
+    </div>
   </div>
 </div>

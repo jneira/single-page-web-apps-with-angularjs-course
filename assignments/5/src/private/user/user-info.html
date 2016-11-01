@@ -39,10 +39,14 @@
                  userForm.email.$touched">
       Email is required
     </span>
+    <span ng-if="userForm.email.$error.email && 
+                 userForm.email.$touched">
+      Email must be valid: user@server.ext
+    </span>
   </div>
   <div class="form-group">
     <input type="text" name="phone" ng-model="$ctrl.user.phone"
-           placeholder="{{ $ctrl.read?'':'Phone Number:###-###-####'}}" 
+           placeholder="Phone Number:###-###-####" 
            size="30"
            value="{{$ctrl.user.phone}}"
            pattern="(\d{3})-(\d{3})-(\d{4})"
@@ -52,11 +56,16 @@
       Phone has to be ###-###-####
     </span>
   </div>
-   <div class="form-group">
-    <input type="text" name="favDish" ng-model="$ctrl.user.favDish"
-           placeholder="{{ $ctrl.read?'':'Favorite dish' }}"
-           size="20" value="{{$ctrl.user.favDish}}"
+  <div class="form-group">
+    <input type="text" name="favDish" ng-model="$ctrl.user.favDish.short_name"
+           placeholder="Favorite dish" ng-if="!$ctrl.user.favDish.id"
+           size="20" value="{{$ctrl.user.favDish.short_name}}"
            ng-disabled="$ctrl.read" />
+    <div class="favorite-dish" ng-if="$ctrl.user.favDish.id">
+      <div>Favourite dish: </div>
+      <menu-item menu-item="$ctrl.user.favDish">
+      </menu-item>
+    </div>
   </div>
   <div class="button-group" ng-if="!$ctrl.read">
     <button class="button" ng-disabled="userForm.$invalid"
