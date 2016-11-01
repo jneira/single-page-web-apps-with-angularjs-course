@@ -17,6 +17,7 @@ function UserController(UserService,MenuService) {
 
   function saveUser(user) {
     UserService.signUp(user);
+    $ctrl.messages.push("Your information has been saved");
   }
   
   console.log("En user controller")
@@ -40,7 +41,6 @@ function UserController(UserService,MenuService) {
     if (user.favDish) {
       getMenuItem(user.favDish.short_name,function(data) {
         saveUser(user);
-        $ctrl.messages.push("Your information has been saved");
       },function(reason) {
         console.log("Error in get menu item "+user.favDish+": "+reason);
         $ctrl.messages.push("No such menu number exists.");
