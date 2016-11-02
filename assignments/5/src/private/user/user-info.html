@@ -2,7 +2,8 @@
   <div class="form-group" ng-if="!$ctrl.read">
     <input type="text" name="id" size="8" ng-model="$ctrl.user.id"
            placeholder="Id" value="{{$ctrl.user.id}}" 
-           required minlength="4" maxlength="8"/>
+           required minlength="4" maxlength="8"
+           class="form-control"/>
     <span ng-if="userForm.id.$error.required && userForm.id.$touched">
       Id is required
     </span>
@@ -15,7 +16,7 @@
   <div class="form-group">
     <input type="text" name="firstName" ng-model="$ctrl.user.firstName"
            placeholder="First Name" value="{{$ctrl.user.firstName}}"
-           ng-disabled="$ctrl.read"
+           ng-disabled="$ctrl.read" class="form-control"
            required/>
     <span ng-if="userForm.firstName.$error.required && 
                  userForm.firstName.$touched">
@@ -23,7 +24,7 @@
     </span>
     <input type="text" name="lastName" ng-model="$ctrl.user.lastName"
            placeholder="Last Name" value="{{$ctrl.user.lastName}}"
-           ng-disabled="$ctrl.read"
+           ng-disabled="$ctrl.read" class="form-control"
            required/>
     <span ng-if="userForm.lastName.$error.required && 
                  userForm.lastName.$touched">
@@ -33,7 +34,7 @@
   <div class="form-group">
     <input type="email" name="email" size="80" ng-model="$ctrl.user.email"
            placeholder="Email" value="{{$ctrl.user.email}}"
-           ng-disabled="$ctrl.read"
+           ng-disabled="$ctrl.read" class="form-control"
            required/>
     <span ng-if="userForm.email.$error.required && 
                  userForm.email.$touched">
@@ -47,10 +48,10 @@
   <div class="form-group">
     <input type="text" name="phone" ng-model="$ctrl.user.phone"
            placeholder="Phone Number:###-###-####" 
-           size="30"
-           value="{{$ctrl.user.phone}}"
+           size="30"  value="{{$ctrl.user.phone}}"
            pattern="(\d{3})-(\d{3})-(\d{4})"
-           ng-disabled="$ctrl.read"/>
+           ng-disabled="$ctrl.read"
+           class="form-control"/>
     <span ng-if="userForm.phone.$error.pattern && 
                  userForm.phone.$touched">
       Phone has to be ###-###-####
@@ -60,7 +61,7 @@
     <input type="text" name="favDish" ng-model="$ctrl.user.favDish.short_name"
            placeholder="Favorite dish" ng-if="!$ctrl.user.favDish.id"
            size="20" value="{{$ctrl.user.favDish.short_name}}"
-           ng-disabled="$ctrl.read" />
+           ng-disabled="$ctrl.read" class="form-control"/>
     <div class="favorite-dish" ng-if="$ctrl.user.favDish.id">
       <div>Favourite dish: </div>
       <menu-item menu-item="$ctrl.user.favDish">
@@ -68,7 +69,7 @@
     </div>
   </div>
   <div class="button-group" ng-if="!$ctrl.read">
-    <button class="button" ng-disabled="userForm.$invalid"
+    <button class="btn btn-default" ng-disabled="userForm.$invalid"
             ng-click="$ctrl.onSubmit({user:$ctrl.user})">
       Submit
     </button>
